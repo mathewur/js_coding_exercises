@@ -1,43 +1,46 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  return nums.filter((num) => num < 1);
 }
 
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  // Your code here
+  return names.filter((name) => name.startsWith(char));
 }
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
-  // Your code here
+  return words.filter((word) => word.startsWith("to "));
 }
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  return nums.filter((num) => Number.isInteger(num));
 }
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  // Your code here
+  return users.map((user) => user.data.city.displayName);
 }
-
+function roundToTwo(num) {
+  return +(Math.round(num + "e+2") + "e-2");
+}
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  return nums.map((num) => roundToTwo(Math.sqrt(num)));
 }
 
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
+  return sentences.filter((sent) =>
+    sent.toLowerCase().includes(str.toLowerCase())
+  );
 }
-
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
+  return triangles.map((triangle) => Math.max(...triangle));
 }
 
 module.exports = {
@@ -48,5 +51,5 @@ module.exports = {
   getCities,
   getSquareRoots,
   findSentencesContaining,
-  getLongestSides
+  getLongestSides,
 };
