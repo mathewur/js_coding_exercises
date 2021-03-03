@@ -1,6 +1,9 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  // Your code here!
+  // return array of squares
+  let squares = nums.map((num) => Math.pow(num, 2));
+  // console.log("array of nums and its squares" +nums+ squares);
+  return squares;
 }
 
 function camelCaseWords(words) {
@@ -30,5 +33,5 @@ module.exports = {
   camelCaseWords,
   getTotalSubjects,
   checkIngredients,
-  duplicateNumbers
+  duplicateNumbers,
 };
