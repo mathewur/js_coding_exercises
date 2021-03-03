@@ -20,19 +20,29 @@ function camelCaseWords(words) {
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+  var subjectTotalArray = people.map((student) => student.subjects.length);
+  //console.log("subjectTotalArray" + subjectTotalArray.reduce((a, b) => a + b));
+  return subjectTotalArray.reduce((a, b) => a + b);
 }
 
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  // Your code here!
+  let allIngredients = menu.map((menuItem) => menuItem.ingredients);
+  // console.log(
+  //   "contains passed ingredient" +
+  //     ingredient +
+  //     allIngredients.some((ing) => ing.indexOf(ingredient) > -1)
+  // );
+  return allIngredients.some((ing) => ing.indexOf(ingredient) > -1);
 }
 
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  // Your code here!
+  let arr1Dupes = arr1.filter((num1) => arr2.includes(num1));
+  //console.log("arr1Dupes" + Array.from(new Set(arr1Dupes.sort())));
+  return Array.from(new Set(arr1Dupes.sort()));
 }
 
 module.exports = {
