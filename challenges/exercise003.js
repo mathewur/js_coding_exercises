@@ -8,7 +8,14 @@ function getSquares(nums) {
 
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Your code here!
+  var exercise001 = require("./exercise001");
+  var capitalizedWordsExcludesFirst = words
+    .slice(1, words.length)
+    .map((word) => exercise001.capitalize(word));
+  // console.log(
+  //   "camelcase::" + words.slice(0, 1) + capitalizedWordsExcludesFirst.join("")
+  // );
+  return words.slice(0, 1) + capitalizedWordsExcludesFirst.join("");
 }
 
 function getTotalSubjects(people) {
