@@ -11,14 +11,12 @@ const findNextNumber = (nums, n) => {
 const count1sand0s = (str) => {
   if (str === undefined) throw new Error("str is required");
   var sum = 0;
-
   for (var i = 0, length = str.length; i < length; i++) {
     sum += Number(str[i]);
   }
-
   return {
-    1: str.length - sum,
-    0: sum,
+    0: str.length - sum,
+    1: sum,
   };
 };
 
@@ -34,16 +32,14 @@ const sumArrays = (arrs) => {
 
 const arrShift = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
-  console.log("before pop arr" + arr);
-  let arrbefore = arr;
-  let arrLast = arr.pop(); // removes last element and changes arr
-  let arrFirst = arr.shift(); // removes first element and changes arr
-  console.log("arrayLastElement" + arrLast + " has popped out " + arr);
-  arr.splice(0, 0, arrLast);
-  arr.push(arrFirst);
-
-  console.log("after add arr" + arr);
-  return arrbefore.length < 2 ? arrbefore : arr;
+  if (arr.length < 2) {
+    return arr;
+  }
+  let arrLast = arr[arr.length - 1];
+  let arrFirst = arr[0];
+  arr.splice(0, 1, arrLast);
+  arr.splice(arr.length - 1, 1, arrFirst);
+  return arr;
 };
 
 const findNeedle = (haystack, searchTerm) => {
@@ -59,7 +55,21 @@ const findNeedle = (haystack, searchTerm) => {
 
 const getWordFrequencies = (str) => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  let wordFreqs = {};
+  //console.log("with special chars "+str)
+  let strNospecialChars = str.replace(/[^a-zA-Z ]/g, "");
+  //console.log("removed  special chars "+strNospecialChars)
+
+  let wordArray = strNospecialChars.split(" ");
+  wordArray.forEach(function (word) {
+    let wordLowerCase = word.toLowerCase();
+    if (wordFreqs[wordLowerCase] === undefined) {
+      wordFreqs[wordLowerCase] = 1;
+    } else {
+      ++wordFreqs[wordLowerCase];
+    }
+  });
+  return wordFreqs;
 };
 
 module.exports = {
