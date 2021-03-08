@@ -77,7 +77,7 @@ describe("isItPrime", () => {
 });
 
 describe("createMatrix", () => {
-  test.only("returns marix of n size with fill e.g 3 foo 2 pot", () => {
+  test("returns marix of n size with fill e.g 3 foo 2 pot", () => {
     const resultArray1 = [
       ["foo", "foo", "foo"],
       ["foo", "foo", "foo"],
