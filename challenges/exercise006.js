@@ -6,14 +6,13 @@
  */
 const sumMultiples = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
-  if (arr === null) return null;
   arr = arr.filter((num) => isMultipleOf3or5(num));
   return arr.length === 0 ? 0 : arr.reduce((a, b) => a + b);
 };
 
 /**
  * This function will receive a number  and should return true/false depending on whether it is a multiple of 3 or 5.
- * @param {Integer} n
+ * @param {Number} n
  * @returns {Boolean}
  */
 const isMultipleOf3or5 = (n) => {
@@ -28,7 +27,13 @@ const isMultipleOf3or5 = (n) => {
  * @returns {Boolean}
  */
 const isValidDNA = (str) => {
+  const validDNACharArray = ["C", "G", "T", "A"];
   if (str === undefined) throw new Error("str is required");
+  if (str.length === 0) return false;
+  return str
+    .toUpperCase()
+    .split("")
+    .every((ch) => validDNACharArray.includes(ch));
 };
 
 /**

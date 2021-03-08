@@ -28,12 +28,9 @@ function getTotalSubjects(people) {
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
+  //creates an array of all ingredients
   let allIngredients = menu.map((menuItem) => menuItem.ingredients);
-  // console.log(
-  //   "contains passed ingredient" +
-  //     ingredient +
-  //     allIngredients.some((ing) => ing.indexOf(ingredient) > -1)
-  // );
+  // true if ingredient found in list of all
   return allIngredients.some((ing) => ing.indexOf(ingredient) > -1);
 }
 
