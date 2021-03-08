@@ -3,6 +3,7 @@ const {
   isValidDNA,
   getComplementaryDNA,
   isItPrime,
+  createMatrix,
 } = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
@@ -72,5 +73,21 @@ describe("isItPrime", () => {
   });
   test("returns false 0 ", () => {
     expect(isItPrime(0)).toBe(false);
+  });
+});
+
+describe("createMatrix", () => {
+  test.only("returns marix of n size with fill e.g 3 foo 2 pot", () => {
+    const resultArray1 = [
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+    ];
+    expect(createMatrix(3, "foo")).toEqual(resultArray1);
+    const resultArray2 = [
+      ["pot", "pot"],
+      ["pot", "pot"],
+    ];
+    expect(createMatrix(2, "pot")).toEqual(resultArray2);
   });
 });
