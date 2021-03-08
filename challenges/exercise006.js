@@ -43,6 +43,13 @@ const isValidDNA = (str) => {
  */
 const getComplementaryDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+  if (!isValidDNA(str))
+    throw new Error(
+      " Invalid DNA ! Should contain characters C, G, T or A only"
+    );
+  let replaceDNAChars = { A: "T", T: "A", G: "C", C: "G" };
+
+  return str.toUpperCase().replace(/[ATCG]/g, (dna) => replaceDNAChars[dna]);
 };
 
 /**

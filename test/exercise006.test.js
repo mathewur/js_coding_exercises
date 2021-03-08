@@ -1,4 +1,8 @@
-const { sumMultiples, isValidDNA } = require("../challenges/exercise006");
+const {
+  sumMultiples,
+  isValidDNA,
+  getComplementaryDNA,
+} = require("../challenges/exercise006");
 
 //describe is jest specific !!
 describe("sumMultiples", () => {
@@ -16,6 +20,15 @@ describe("sumMultiples", () => {
 
   test("if the array is empty returns 0", () => {
     expect(sumMultiples([])).toBe(0);
+  });
+});
+
+describe("getComplementaryDNA", () => {
+  test("check T replaces A, and C replaces  G in valid DNA  ie only contains C G T A", () => {
+    expect(getComplementaryDNA("CGTACGTA")).toBe("GCATGCAT");
+  });
+  test("lower case check T replaces A, and C replaces  G in valid DNA  ie only contains C G T A", () => {
+    expect(getComplementaryDNA("cgTACGTa")).toBe("GCATGCAT");
   });
 });
 
