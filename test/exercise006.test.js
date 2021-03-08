@@ -2,9 +2,9 @@ const {
   sumMultiples,
   isValidDNA,
   getComplementaryDNA,
+  isItPrime,
 } = require("../challenges/exercise006");
 
-//describe is jest specific !!
 describe("sumMultiples", () => {
   test("sum of any numbers which are a multiple of 3 or 5 from list", () => {
     expect(sumMultiples([5, 3, 7, 8, 1, 10])).toBe(18);
@@ -52,5 +52,25 @@ describe("isValidDNA", () => {
   });
   test("returns false for an empty string", () => {
     expect(isValidDNA("")).toBe(false);
+  });
+});
+
+describe("isItPrime", () => {
+  test("returns true for a prime 1,3,5,7...", () => {
+    expect(isItPrime(1)).toBe(true);
+    expect(isItPrime(3)).toBe(true);
+    expect(isItPrime(5)).toBe(true);
+    expect(isItPrime(7)).toBe(true);
+    expect(isItPrime(11)).toBe(true);
+  });
+
+  test("returns false for non prime", () => {
+    expect(isItPrime(2)).toBe(false);
+    expect(isItPrime(4)).toBe(false);
+    expect(isItPrime(10)).toBe(false);
+    expect(isItPrime(25)).toBe(false);
+  });
+  test("returns false 0 ", () => {
+    expect(isItPrime(0)).toBe(false);
   });
 });

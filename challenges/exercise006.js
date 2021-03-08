@@ -59,6 +59,12 @@ const getComplementaryDNA = (str) => {
  */
 const isItPrime = (n) => {
   if (n === undefined) throw new Error("n is required");
+
+  let limitLoop = Math.ceil(Math.sqrt(n));
+  for (let i = 2; i <= limitLoop; i++) {
+    if (n % i === 0) return false;
+  }
+  return n >= 1;
 };
 
 /**
