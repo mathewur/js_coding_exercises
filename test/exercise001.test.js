@@ -8,7 +8,7 @@ const {
   reverseAllWords,
   countLinuxUsers,
   getMeanScore,
-  simpleFizzBuzz
+  simpleFizzBuzz,
 } = require("../challenges/exercise001");
 
 describe("capitalize", () => {
@@ -105,7 +105,7 @@ describe("countLinuxUsers", () => {
       { name: "Heather", OS: "Windows 8", type: "Windows" },
       { name: "Paul", OS: "Firefox OS", type: "Unknown" },
       { name: "Sheila", OS: "Windows 10", type: "Windows" },
-      { name: "Pedro", OS: "Windows 95", type: "Windows" }
+      { name: "Pedro", OS: "Windows 95", type: "Windows" },
     ];
     expect(countLinuxUsers(users)).toBe(0);
   });
@@ -118,7 +118,7 @@ describe("countLinuxUsers", () => {
       { name: "Jane", OS: "Mint 19.1", type: "Linux" },
       { name: "Jen", OS: "CentOS 7", type: "Linux" },
       { name: "David", OS: "Fedora 28", type: "Linux" },
-      { name: "Pedro", OS: "Windows 95", type: "Windows" }
+      { name: "Pedro", OS: "Windows 95", type: "Windows" },
     ];
     expect(countLinuxUsers(users)).toBe(5);
   });

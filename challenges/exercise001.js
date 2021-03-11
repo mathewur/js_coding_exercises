@@ -20,9 +20,7 @@ function roundToTwo(num) {
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // console.log(
-  //   "vataddedPrice" + roundToTwo(originalPrice * (1 + vatRate / 100), 2)
-  // );
+
   return roundToTwo(originalPrice * (1 + vatRate / 100), 2);
 }
 
@@ -35,21 +33,11 @@ function getSalePrice(originalPrice, reduction) {
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   if (str.length % 2 == 0) {
-    // console.log(
-    //   str +
-    //     "The number is even." +
-    //     str.substring(str.length / 2 - 1, str.length / 2 + 1)
-    // );
     return str.substring(str.length / 2 - 1, str.length / 2 + 1);
   }
 
   // if the number is odd
   else {
-    // console.log(
-    //   str +
-    //     "The number is odd." +
-    //     str.substring(str.length / 2, str.length / 2 + 1)
-    // );
     return str.substring(str.length / 2, str.length / 2 + 1);
   }
 }
@@ -57,7 +45,6 @@ function getMiddleCharacter(str) {
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
 
-  // console.log("reversed:::" + word.split("").reverse().join(""));
   return word.split("").reverse().join("");
 }
 
@@ -68,26 +55,15 @@ function reverseAllWords(words) {
   for (const word of words) {
     // add reversed word to empty array
     reversedWords.push(reverseWord(word));
-    // console.log(
-    //   "reversed Word::" +
-    //     reverseWord(word) +
-    //     "and added to  :::" +
-    //     reversedWords
-    // );
   }
-  //console.log("final reversed Words :::" + reversedWords);
   return reversedWords;
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // let linuxUsers = users.filter(function (user) {
-  //   return user.type.indexOf("Linux") > -1;
-  // });
-  //changing above to an arrow function
+
   let linuxUsers = users.filter((user) => user.type.indexOf("Linux") > -1);
-  // console.log("subset LinuxUsers " + linuxUsers);
-  // console.log("Final linuxUsersCount.length" + linuxUsers.length);
+
   return linuxUsers.length;
 }
 

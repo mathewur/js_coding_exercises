@@ -4,6 +4,7 @@ const {
   getComplementaryDNA,
   isItPrime,
   createMatrix,
+  areWeCovered,
 } = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
@@ -78,16 +79,101 @@ describe("isItPrime", () => {
 
 describe("createMatrix", () => {
   test("returns marix of n size with fill e.g 3 foo 2 pot", () => {
-    const resultArray1 = [
-      ["foo", "foo", "foo"],
-      ["foo", "foo", "foo"],
-      ["foo", "foo", "foo"],
-    ];
-    expect(createMatrix(3, "foo")).toEqual(resultArray1);
-    const resultArray2 = [
+    expect(createMatrix(3, 5)).toEqual([
+      [5, 5, 5],
+      [5, 5, 5],
+      [5, 5, 5],
+    ]);
+
+    expect(createMatrix(2, "pot")).toEqual([
       ["pot", "pot"],
       ["pot", "pot"],
-    ];
-    expect(createMatrix(2, "pot")).toEqual(resultArray2);
+    ]);
+    expect(createMatrix(1, 7)).toEqual([[7]]);
+    expect(createMatrix(3, "foo")).toEqual([
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+    ]);
+  });
+});
+
+describe("areWeCovered", () => {
+  test("returns true if day is on the rota of 3 or more employees ", () => {
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "Maya",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+        ],
+        "Tuesday"
+      )
+    ).toBe(true);
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Saturday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "Coco",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "Maya",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+        ],
+        "Saturday"
+      )
+    ).toBe(true);
+  });
+  test("returns false if day is on rota of less than 3 employees ie 2 , 1 or empty", () => {
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "Maya",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+        ],
+        "Wednesday"
+      )
+    ).toBe(false);
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Saturday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "Coco",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "Maya",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+        ],
+        "Friday"
+      )
+    ).toBe(false);
+    expect(areWeCovered([], "Friday")).toBe(false);
   });
 });

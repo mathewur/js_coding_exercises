@@ -4,14 +4,13 @@ const findNextNumber = (nums, n) => {
   let isLastIndex = nums.indexOf(n) === nums.length - 1;
   let isNotInArray = nums.indexOf(n) < 0;
 
-  //console.log("isLastIndex"+isLastIndex);
   return isLastIndex || isNotInArray ? null : nums[nums.indexOf(n) + 1];
 };
 
 const count1sand0s = (str) => {
   if (str === undefined) throw new Error("str is required");
-  var sum = 0;
-  for (var i = 0, length = str.length; i < length; i++) {
+  let sum = 0;
+  for (let i = 0, length = str.length; i < length; i++) {
     sum += Number(str[i]);
   }
   return {
@@ -30,6 +29,7 @@ const sumArrays = (arrs) => {
   return arrs.flat().reduce((a, b) => a + b);
 };
 
+//returns an array with the first and last items swapped
 const arrShift = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
   if (arr.length < 2) {
@@ -41,7 +41,7 @@ const arrShift = (arr) => {
   arr.splice(arr.length - 1, 1, arrFirst);
   return arr;
 };
-
+//returns true if any of the properties of an object contain the specified string
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
@@ -56,9 +56,7 @@ const findNeedle = (haystack, searchTerm) => {
 const getWordFrequencies = (str) => {
   if (str === undefined) throw new Error("str is required");
   let wordFreqs = {};
-  //console.log("with special chars "+str)
   let strNospecialChars = str.replace(/[^a-zA-Z ]/g, "");
-  //console.log("removed  special chars "+strNospecialChars)
 
   let wordArray = strNospecialChars.split(" ");
   wordArray.forEach(function (word) {
