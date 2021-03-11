@@ -8,7 +8,7 @@ const sumDigits = (n) => {
   //Trying template strings , only works to 18 digits
 
   return n
-    .toFixed()
+    .toString()
     .split("")
     .map((num) => Number.parseInt(num))
     .reduce((a, b) => a + b);
@@ -25,6 +25,15 @@ const sumDigits = (n) => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (step === undefined) {
+    step = 1;
+  }
+
+  let rangeArray = new Array();
+  for (let i = start; i <= end; i = i + step) {
+    rangeArray.push(i);
+  }
+  return rangeArray;
 };
 
 /**
