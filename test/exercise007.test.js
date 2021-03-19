@@ -1,7 +1,7 @@
 const {
   sumDigits,
   createRange,
-  getScreentimeAlertList
+  getScreentimeAlertList,hexToRGB
 } = require("../challenges/exercise007");
 
 describe("sumDigits", () => {
@@ -122,4 +122,18 @@ describe("getScreentimeAlertList", () => {
     ],"2019-06-11")).toEqual([]);
 
   });
+});
+
+describe("hexToRGB", () => {
+    test("Convert #FF1133 to   rgb(255,17,51) ", () => {
+        expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+    });
+
+    test("Convert a hex blue #0000FF to rgb  ", () => {
+        expect(hexToRGB("#0000FF")).toBe("rgb(0,0,255)");
+    });
+
+    test("Convert a hex teal  #008080 to rgb  ", () => {
+        expect(hexToRGB("#008080")).toBe("rgb(0,128,128)");
+    });
 });
