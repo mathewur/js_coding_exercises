@@ -108,7 +108,19 @@ const hexToRGB = (hexStr) => {
  */
 const findWinner = (board) => {
   if (board === undefined) throw new Error("board is required");
+  return checkRoworColumnWin(board,"0")?"0":(checkRoworColumnWin(board,"X")?"X":null);// to change "X"
 };
+
+const transpose = (matrix) => {
+  let [row] = matrix
+  return row.map((value, column) => matrix.map(row => row[column]))
+}
+
+function checkRoworColumnWin(board, char) {
+  let anyRowWin =  board.map(boardRow => boardRow.every(pos => pos ===char )).includes(true);
+  let anyColWin =  transpose(board).map(boardRow => boardRow.every(pos => pos ===char )).includes(true);
+  return anyRowWin ||anyColWin ;
+}
 
 module.exports = {
   sumDigits,

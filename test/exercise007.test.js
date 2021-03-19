@@ -1,7 +1,7 @@
 const {
   sumDigits,
   createRange,
-  getScreentimeAlertList,hexToRGB
+  getScreentimeAlertList,hexToRGB,findWinner
 } = require("../challenges/exercise007");
 
 describe("sumDigits", () => {
@@ -135,5 +135,29 @@ describe("hexToRGB", () => {
 
     test("Convert a hex teal  #008080 to rgb  ", () => {
         expect(hexToRGB("#008080")).toBe("rgb(0,128,128)");
+    });
+});
+describe("findWinner", () => {
+    test("returns the winner of a noughts and crosses", () => {
+        const board1 = [
+                ["X", "0", "0"],
+                ["X", null, null],
+                ["X", null, "0"]],
+            board2 = [
+                ["0", "0", "0"],
+                ["0", null, null],
+                ["X", null, "0"]],
+            board3 = [
+                ["0", "X", null],
+                ["X", "0", null],
+                ["X", null, "0"]],
+            board4 = [
+                ["0", "X", "0"],
+                ["0", "0", "X"],
+                ["X", "0", "X"]]
+        expect(findWinner(board1)).toBe("X");
+        expect(findWinner(board2)).toBe("0");
+        //expect(findWinner(board3)).toBe("0"); test for diagonals
+        expect(findWinner(board4)).toBe(null);
     });
 });
