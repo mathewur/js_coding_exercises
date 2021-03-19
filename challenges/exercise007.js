@@ -1,6 +1,6 @@
 /**
  * This function takes a number, e.g. 123 and returns the sum of all its digits, e.g 6 in this example.
- * @param {Number} n
+ * @param {bigint} n
  */
 const sumDigits = (n) => {
   if (n === undefined) throw new Error("n is required");
@@ -10,7 +10,8 @@ const sumDigits = (n) => {
   return n
     .toString()
     .split("")
-    .map((num) => Number.parseInt(num))
+      // eslint-disable-next-line no-undef
+    .map((num) => BigInt(num))
     .reduce((a, b) => a + b);
 };
 
@@ -68,6 +69,16 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  let usersToAlert = [];
+  users.forEach(user =>
+      user.screenTime.forEach(sc => {
+            if ((sc.date == date) && Object.values(sc.usage).reduce((a, b) => a + b) > 100) {
+              usersToAlert.push(user.username);
+            }
+          }
+      )
+  )
+  return usersToAlert;
 };
 
 /**
