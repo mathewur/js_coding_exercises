@@ -108,7 +108,7 @@ const hexToRGB = (hexStr) => {
  */
 const findWinner = (board) => {
   if (board === undefined) throw new Error("board is required");
-  return checkRoworColumnWin(board,"0")?"0":(checkRoworColumnWin(board,"X")?"X":null);// to change "X"
+  return checkWin(board,"0")?"0":(checkWin(board,"X")?"X":null);
 };
 
 const transpose = (matrix) => {
@@ -121,6 +121,18 @@ function checkRoworColumnWin(board, char) {
   let anyColWin =  transpose(board).map(boardRow => boardRow.every(pos => pos ===char )).includes(true);
   return anyRowWin ||anyColWin ;
 }
+function checkDiagonalWin(board, char) {
+  let diagonalOneWayWin =  board[0][0] ===char && board[1][1] ===char && board[2][2] ===char ;
+  let diagonalOtherWayWin =  board[0][2] ===char && board[1][1] ===char && board[2][0] ===char ;
+
+  return diagonalOneWayWin ||diagonalOtherWayWin ;
+}
+function checkWin(board, char) {
+
+
+  return checkRoworColumnWin(board, char) ||checkDiagonalWin(board, char) ;
+}
+
 
 module.exports = {
   sumDigits,

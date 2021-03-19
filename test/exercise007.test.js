@@ -157,7 +157,7 @@ describe("findWinner", () => {
                 ["X", "0", "X"]]
         expect(findWinner(board1)).toBe("X");
         expect(findWinner(board2)).toBe("0");
-        //expect(findWinner(board3)).toBe("0"); test for diagonals
+        expect(findWinner(board3)).toBe("0");
         expect(findWinner(board4)).toBe(null);
     });
 });
