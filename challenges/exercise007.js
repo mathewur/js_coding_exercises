@@ -10,8 +10,9 @@ const sumDigits = (n) => {
   return n
     .toString()
     .split("")
-      // eslint-disable-next-line no-undef
-    .map((num) => BigInt(num))
+    .map((num) => {
+      return Number(num);
+    })
     .reduce((a, b) => a + b);
 };
 
